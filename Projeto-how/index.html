@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskWell</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="./img/icon-removebg-preview.png" type="image/x-icon">
+
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo"><img style="width: 30px;" src="/img/icon-removebg-preview.png" alt=""> TaskWell</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="./Receitas.html">Receitas</a></li>
+          <li><a href="./Sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+      <div class="user-profile">
+        <span>Olá, Vitor!</span>
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
+          class="avatar" />
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main container">
+    <aside class="sidebar">
+      <div class="welcome-card">
+        <h3>Bem-vindo de volta, Vitor!</h3>
+        <div class="progress-circle">
+          <span id="daily-progress-count">0/0</span>
+        </div>
+        <p>
+          Você concluiu <span id="completed-items-count">0</span> de
+          <span id="total-items-count">0</span> itens hoje!
+        </p>
+      </div>
+      <div class="next-items">
+        <h4>Próximos Itens</h4>
+        <ul id="next-items-list">
+          <li>Meditar (Hábito)</li>
+          <li>Comprar legumes (Tarefa)</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content-area">
+      <div class="card habit-section">
+        <h2>Seus Hábitos Diários</h2>
+        <button class="add-button" onclick="openModal('addHabitModal')">
+          <i class="fas fa-plus"></i> Novo Hábito
+        </button>
+        <div id="habit-list" class="item-list">
+          <div class="item habit-item" data-id="1">
+            <input type="checkbox" id="habit-1" onchange="toggleHabitDone(1)" />
+            <label for="habit-1">Beber 2L de água</label>
+            <div class="item-actions">
+              <button onclick="editItem(1, 'habit')">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button onclick="removeItem(1, 'habit')">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="reset-info">Os hábitos são resetados diariamente.</p>
+      </div>
+
+      <div class="card task-section">
+        <h2>Suas Tarefas do Dia</h2>
+        <button class="add-button" onclick="openModal('addTaskModal')">
+          <i class="fas fa-plus"></i> Nova Tarefa
+        </button>
+        <div id="task-list" class="item-list">
+          <div class="item task-item" data-id="1">
+            <input type="checkbox" id="task-1" onchange="toggleTaskDone(1)" />
+            <label for="task-1">Comprar mantimentos</label>
+            <div class="item-actions">
+              <button onclick="editItem(1, 'task')">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button onclick="removeItem(1, 'task')">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="right-sidebar">
+      <div class="card motivation-card">
+        <h3>Motivação do Dia</h3>
+        <p>
+          "Comece onde você está. Use o que você tem. Faça o que você pode."
+        </p>
+      </div>
+      <div class="card suggestions-card">
+        <h3>Sugestões para Você</h3>
+        <ul>
+          <li>Receita: Salada Detox de Espinafre</li>
+          <li>Artigo: 5 Minutos de Meditação Diária</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <div id="addHabitModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal('addHabitModal')">&times;</span>
+      <h2>Adicionar Novo Hábito</h2>
+      <input type="text" id="newHabitName" placeholder="Nome do Hábito" required />
+      <button onclick="addHabit()">Adicionar</button>
+    </div>
+  </div>
+
+  <div id="addTaskModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal('addTaskModal')">&times;</span>
+      <h2>Adicionar Nova Tarefa</h2>
+      <input type="text" id="newTaskName" placeholder="Nome da Tarefa" required />
+      <button onclick="addTask()">Adicionar</button>
+    </div>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal('editModal')">&times;</span>
+      <h2>Editar Item</h2>
+      <input type="text" id="editItemName" placeholder="Novo nome" required />
+      <button onclick="saveEdit()">Salvar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
